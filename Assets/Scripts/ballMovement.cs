@@ -40,6 +40,13 @@ public class ballMovement : MonoBehaviour
             force = new Vector2(Mathf.Clamp(startPos.x - endPos.x, minPower.x, maxPower.x), Mathf.Clamp(startPos.y - endPos.y, minPower.y, maxPower.y));
             Debug.Log(force);
             rb.AddForce(force * power, ForceMode2D.Impulse);
+                
+        }
+
+        if (rb.velocity.sqrMagnitude > 0.1)
+        {
+            gameObject.transform.localScale += new Vector3(power, power, power) / 10000;
+
         }
     }
 }
