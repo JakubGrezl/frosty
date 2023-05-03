@@ -30,7 +30,6 @@ public class ballMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log(startPos);
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -38,7 +37,6 @@ public class ballMovement : MonoBehaviour
             endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             force = new Vector2(Mathf.Clamp(startPos.x - endPos.x, minPower.x, maxPower.x), Mathf.Clamp(startPos.y - endPos.y, minPower.y, maxPower.y));
-            Debug.Log(force);
             rb.AddForce(force * power, ForceMode2D.Impulse);
                 
         }

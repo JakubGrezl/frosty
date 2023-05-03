@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class treeAnimation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Animator an;
+
+    private void Start()
     {
-        
+        an = gameObject.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
+
+
+        if (collision.collider.name == "ball") {
+            an.Play("tree-hit");
+        }
+    }   
 }
