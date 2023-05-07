@@ -7,13 +7,15 @@ using UnityEngine.EventSystems;
 
 public class ballMovement : MonoBehaviour
 {
-    [SerializeField]
-    Vector3 minPower, maxPower;
+    [SerializeField] int maxSpeed;
+    [SerializeField] int power;
+
+    bool shot;
+
+    ball ball;
 
     Rigidbody2D rb;
 
-    [SerializeField]
-    int power;
 
     Vector3 force;
 
@@ -23,28 +25,45 @@ public class ballMovement : MonoBehaviour
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        ball = gameObject.GetComponent<ball>();
     }
 
-    public void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (collision.collider.tag == "tree")
         {
-            startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            rb.velocity *= 0.4f;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+    }
+    private void Update()
+    {
+
+        if (!shot)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                // neco jinýho nez addForce > bugguje se to a nevim co s tim delat XDDD
+
+                endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                force = new Vector2(startPos.x - endPos.x, startPos.y - endPos.y);
+                rb.velocity = force * power;
+                // shot = true;
+            }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (rb.velocity.sqrMagnitude > 0.1 && ball.scale < ball.maxScale)
         {
-            endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            force = new Vector2(Mathf.Clamp(startPos.x - endPos.x, minPower.x, maxPower.x), Mathf.Clamp(startPos.y - endPos.y, minPower.y, maxPower.y));
-            rb.AddForce(force * power, ForceMode2D.Impulse);
-                
-        }
-
-        if (rb.velocity.sqrMagnitude > 0.1)
-        {
-            gameObject.transform.localScale += new Vector3(power, power, power) / 10000;
-
+            ball.scale += 0.005f;
         }
     }
 }

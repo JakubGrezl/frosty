@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class treeAnimation : MonoBehaviour
+public class plotAnimation : MonoBehaviour
 {
-    [SerializeField]
-    string animationPlay;
-
     Animator an;
 
     private void Start()
@@ -16,8 +13,9 @@ public class treeAnimation : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.name == "ball") {
-            an.Play(animationPlay);
+        if (collision.collider.name == "ball")
+        {
+            an.Play("plot-hit");
         }
-    }   
+    }
 }
