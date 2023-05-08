@@ -5,14 +5,7 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
-    [SerializeField]
-    Slider slider;
-
-
-    void Start()
-    {
-        
-    }
+    [SerializeField] Slider slider;
 
     public void UpdateUI(float value)
     {

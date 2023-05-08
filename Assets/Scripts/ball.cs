@@ -5,15 +5,20 @@ using UnityEngine;
 
 public class ball : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] 
     UI ui;
-
-    [SerializeField]
+    [SerializeField] 
     public float maxScale;
+
+    public Rigidbody2D rb;
+
+    public bool moves = true;
+
+
     public float scale;
     public float defaultScale;
     float size;
-
+    public float speed;
 
     public float Size
     {
@@ -30,21 +35,19 @@ public class ball : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponentInParent<Rigidbody2D>();
         scale = 1f;
         defaultScale = scale;
     }
 
-    // Update is called once per frame
     void Update()
     {
         gameObject.transform.localScale = new Vector3(scale, scale, scale);
         Size = ((scale - defaultScale) / (maxScale - defaultScale)) * 100f;
         ui.UpdateUI(Size);
-        Debug.Log("SIZE IN 0 - 100: " + Size + ",DS: " + defaultScale + ",Scale: " + scale);
+        
+        // Debug.Log("SIZE IN 0 - 100: " + Size + ",DS: " + defaultScale + ",Scale: " + scale);
     }
-
-
 }

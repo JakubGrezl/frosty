@@ -16,11 +16,7 @@ public class ballMovement : MonoBehaviour
 
     Rigidbody2D rb;
 
-
-    Vector3 force;
-
-    Vector3 startPos;
-    Vector3 endPos;
+    Vector3 force, startPos, endPos;
 
     private void Start()
     {
@@ -52,18 +48,22 @@ public class ballMovement : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
-                // neco jinýho nez addForce > bugguje se to a nevim co s tim delat XDDD
-
                 endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 force = new Vector2(startPos.x - endPos.x, startPos.y - endPos.y);
                 rb.velocity = force * power;
+                // just one shot
                 // shot = true;
             }
         }
 
         if (rb.velocity.sqrMagnitude > 0.1 && ball.scale < ball.maxScale)
         {
-            ball.scale += 0.005f;
+            ball.scale += 0.001f;
+        }
+
+        if (rb.velocity.sqrMagnitude < 0.1 && shot)
+        {
+            ball.moves = false;
         }
     }
 }
