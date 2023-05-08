@@ -17,7 +17,7 @@ public class halda : MonoBehaviour
     {
         if (collision.tag == "ball")
         {
-            ball.rb.velocity *= 2f;
+            ball.rb.velocity *= 5f;
             an.Play("haldahit");
             
             Destroy(gameObject, 1f);

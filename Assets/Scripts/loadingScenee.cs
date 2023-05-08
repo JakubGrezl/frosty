@@ -9,4 +9,17 @@ public class loadingScenee : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R)) 
+        {
+            ResetScene();
+        }
+    }
 }

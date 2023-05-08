@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class ball : MonoBehaviour
 {
-    [SerializeField] 
-    UI ui;
-    [SerializeField] 
-    public float maxScale;
+    [SerializeField] UI ui;
 
+    [SerializeField] public float maxScale;
+
+    
     public Rigidbody2D rb;
 
     public bool moves = true;
@@ -51,7 +51,7 @@ public class ball : MonoBehaviour
         gameObject.transform.localScale = new Vector3(scale, scale, scale);
         Size = ((scale - defaultScale) / (maxScale - defaultScale)) * 100f;
         ui.UpdateUI(Size);
-        ui.UpdateUI(shot, maxShot);
+        ui.UpdateUISec(shot, maxShot);
         
         // Debug.Log("SIZE IN 0 - 100: " + Size + ",DS: " + defaultScale + ",Scale: " + scale);
     }
