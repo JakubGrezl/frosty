@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4438831298084821022}
   - component: {fileID: 4438831298084820992}
   - component: {fileID: 4438831298084821021}
+  - component: {fileID: 7236515883818426667}
   m_Layer: 0
   m_Name: ball
   m_TagString: Untagged
@@ -136,6 +137,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537242a87e4e8fc4fb409b0f069ed14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPower: {x: -10, y: -10, z: 0}
-  maxPower: {x: 5, y: 5, z: 5}
+  maxSpeed: 0
   power: 5
+  bounceRange: 0
+  maxShot: 0
+  scaleRatio: 0
+--- !u!114 &7236515883818426667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8615582939508238896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cf1f2f611b7da4781aba359a1e155f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: {fileID: 0}
+  maxScale: 0
+  rb: {fileID: 0}
+  moves: 1
+  scale: 0
+  defaultScale: 0
+  speed: 0
+  shot: 0
+  maxShot: 0
