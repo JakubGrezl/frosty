@@ -19,6 +19,10 @@ public class ball : MonoBehaviour
     public float defaultScale;
     float size;
     public float speed;
+    
+    
+    public int shot;
+    public int maxShot;
 
     public float Size
     {
@@ -47,6 +51,7 @@ public class ball : MonoBehaviour
         gameObject.transform.localScale = new Vector3(scale, scale, scale);
         Size = ((scale - defaultScale) / (maxScale - defaultScale)) * 100f;
         ui.UpdateUI(Size);
+        ui.UpdateUI(shot, maxShot);
         
         // Debug.Log("SIZE IN 0 - 100: " + Size + ",DS: " + defaultScale + ",Scale: " + scale);
     }

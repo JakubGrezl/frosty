@@ -5,9 +5,11 @@ using UnityEngine;
 public class house : MonoBehaviour
 {
     [SerializeField] ball ball;
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "ball" && ball.Size >= 100) {
+        if (collision.tag == "ball" && ball.Size >= 100)
+        {
             Debug.Log("U won");
             ball.rb.velocity = Vector3.zero;
         }

@@ -17,5 +17,7 @@ public class plotAnimation : MonoBehaviour
         {
             an.Play("plot-hit");
         }
+
+        
     }
 }

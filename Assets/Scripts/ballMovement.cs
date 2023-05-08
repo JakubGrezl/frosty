@@ -9,8 +9,10 @@ public class ballMovement : MonoBehaviour
 {
     [SerializeField] int maxSpeed;
     [SerializeField] int power;
-
-    bool shot;
+    [SerializeField] int bounceRange;
+    [SerializeField] int maxShot; 
+    
+    int shot;
 
     ball ball;
 
@@ -22,6 +24,8 @@ public class ballMovement : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         ball = gameObject.GetComponent<ball>();
+        ball.shot = shot;
+        ball.maxShot = maxShot;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -30,6 +34,8 @@ public class ballMovement : MonoBehaviour
         {
             rb.velocity *= 0.4f;
         }
+
+        rb.AddForce(-collision.contacts[0].normal + new Vector2(Random.Range(-bounceRange, bounceRange), Random.Range(-bounceRange, bounceRange)));
     }
 
     private void FixedUpdate()
@@ -39,7 +45,7 @@ public class ballMovement : MonoBehaviour
     private void Update()
     {
 
-        if (!shot)
+        if (shot <= maxShot)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -52,16 +58,17 @@ public class ballMovement : MonoBehaviour
                 force = new Vector2(startPos.x - endPos.x, startPos.y - endPos.y);
                 rb.velocity = force * power;
                 // just one shot
-                // shot = true;
+                shot++;
             }
         }
 
         if (rb.velocity.sqrMagnitude > 0.1 && ball.scale < ball.maxScale)
         {
-            ball.scale += 0.001f;
+            ball.scale += 0.002f;
+            ball.moves = true;
         }
 
-        if (rb.velocity.sqrMagnitude < 0.1 && shot)
+        if (rb.velocity.sqrMagnitude < 0.1 && shot <= maxShot)
         {
             ball.moves = false;
         }
