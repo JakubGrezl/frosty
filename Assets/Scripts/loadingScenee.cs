@@ -10,6 +10,11 @@ public class loadingScenee : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     public void ResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -20,6 +25,10 @@ public class loadingScenee : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) 
         {
             ResetScene();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

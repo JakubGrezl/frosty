@@ -34,7 +34,7 @@ public class ballMovement : MonoBehaviour
             rb.velocity *= 0.4f;
         }
 
-        rb.AddForce(-collision.contacts[0].normal + new Vector2(Random.Range(0, bounceRange), Random.Range(0, bounceRange)) + rb.velocity);
+       //  rb.AddForce(-collision.contacts[0].normal + new Vector2(Random.Range(0, bounceRange), Random.Range(0, bounceRange)) + rb.velocity);
 
     }
 

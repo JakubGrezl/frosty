@@ -166,7 +166,7 @@ MonoBehaviour:
   power: 5
   bounceRange: 100
   maxShot: 3
-  scaleRatio: 2
+  scaleRatio: 3
 --- !u!114 &7236515883818426667
 MonoBehaviour:
   m_ObjectHideFlags: 0
