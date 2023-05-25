@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VectorGraphics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class house : MonoBehaviour
 {
-    [SerializeField] ball ball;
-
+    Ball ball;
     Collider2D col;
     private void Start()
     {
+       
+        ball = GameObject.Find("ball").GetComponent<Ball>();
         col = gameObject.GetComponent<Collider2D>();        
     }
     

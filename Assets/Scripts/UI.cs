@@ -15,7 +15,7 @@ public class UI : MonoBehaviour
 
     public void UpdateUISec(float value, float maxValue)
     {
-        slider2.value = value;
         slider2.maxValue = maxValue;
+        slider2.value = maxValue - value;
     }
 }

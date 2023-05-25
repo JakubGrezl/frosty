@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ball : MonoBehaviour
-{
-    [SerializeField] UI ui;
 
-    [SerializeField] public float maxScale;
+public class Ball : MonoBehaviour {
+    public float maxScale;
 
-    
     public Rigidbody2D rb;
 
     public bool moves = true;
 
+    UI ui;
 
     public float scale;
     public float defaultScale;
@@ -42,6 +40,8 @@ public class ball : MonoBehaviour
     void Start()
     {
         rb = GetComponentInParent<Rigidbody2D>();
+        ui = GameObject.FindGameObjectsWithTag("MainCamera")[0].GetComponent<UI>();
+
         scale = 1f;
         defaultScale = scale;
     }
@@ -50,8 +50,12 @@ public class ball : MonoBehaviour
     {
         gameObject.transform.localScale = new Vector3(scale, scale, scale);
         Size = ((scale - defaultScale) / (maxScale - defaultScale)) * 100f;
-        ui.UpdateUI(Size);
-        ui.UpdateUISec(shot, maxShot);
+        if (ui != null)
+        {
+            ui.UpdateUI(Size);
+            ui.UpdateUISec(shot, maxShot);
+
+        }
         
         // Debug.Log("SIZE IN 0 - 100: " + Size + ",DS: " + defaultScale + ",Scale: " + scale);
     }

@@ -14,7 +14,7 @@ public class ballMovement : MonoBehaviour
     [SerializeField] float scaleRatio;
 
 
-    ball ball;
+    Ball ball;
 
     Rigidbody2D rb;
 
@@ -23,7 +23,7 @@ public class ballMovement : MonoBehaviour
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        ball = gameObject.GetComponent<ball>();
+        ball = gameObject.GetComponent<Ball>();
         ball.maxShot = maxShot;
     }
 
@@ -45,7 +45,7 @@ public class ballMovement : MonoBehaviour
     private void Update()
     {
 
-        if (ball.shot <= ball.maxShot)
+        if (ball.shot < ball.maxShot)
         {
             if (Input.GetMouseButtonDown(0))
             {
