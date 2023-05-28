@@ -1993,7 +1993,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4438831298084821021, guid: 3fdc1a717a350634681945dbe1b05165, type: 3}
       propertyPath: scaleRatio
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4438831298084821022, guid: 3fdc1a717a350634681945dbe1b05165, type: 3}
       propertyPath: m_Material
